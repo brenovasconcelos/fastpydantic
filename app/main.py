@@ -19,7 +19,7 @@ def fetch_all():
 
     :param string anything: Anything that can be used
     :return: List of all the data
-    :rtype: list of dicts
+    :rtype: List of dicts
     :raises TransactionError: If there is an error we return TransactionError
     """
     trades = db.make_query()

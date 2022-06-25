@@ -1,4 +1,7 @@
+from typing import List
+
 from pymongo_inmemory import MongoClient
+
 from app.helpers import generate_random_data_test
 
 
@@ -11,20 +14,18 @@ class MongoSteeleye:
 
         self.load_db()
     
-    def make_query(self, query={}):
-
+    def make_query(self, query={}) -> List:
         ret = self.collection.find(query, projection={"_id": False})
         return list(ret)
 
-    def load_db(self):
+    def load_db(self) -> None:
         data_test = generate_random_data_test()
-        loaded = self.collection.insert_many(data_test)
-        return loaded
+        self.collection.insert_many(data_test)
 
-    def start_client(self):
+    def start_client(self) -> MongoClient:
         client = MongoClient()
 
         return client
 
-    def teardown(self):
+    def teardown(self) -> None:
         self.client.close()

@@ -9,6 +9,11 @@ def test_main():
     assert response.status_code == 200
 
 def test_get_all_items():
-    response = client.get("/get-all/")
+    response = client.get("/fetch-all/")
+
+    assert response.status_code == 200
+
+def test_get_single_item():
+    response = client.get("/fetch-item/?id=5")
 
     assert response.status_code == 200
